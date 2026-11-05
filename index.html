@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escolha seus serviços · Bruna Lanna Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f5f2ec;--ink:#141414;--mut:#77736a;--line:#ddd8cd;--card:#fff;--y:#fccd14;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414;--ink:#f5f2ec;--mut:#a39e92;--line:#34312c;--card:#1f1e1c}}
+:root[data-theme="dark"]{--bg:#141414;--ink:#f5f2ec;--mut:#a39e92;--line:#34312c;--card:#1f1e1c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:560px;margin:0 auto;padding:28px 20px 40px}
+.logo{text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:44px;line-height:1;font-weight:400;letter-spacing:-1px}
+.logo i{background:linear-gradient(transparent 55%,var(--y) 55%);padding:0 4px}
+.logo small{display:block;font:500 13px 'DM Sans',sans-serif;letter-spacing:7px;margin-top:10px}
+.logo small:before{content:"";display:inline-block;width:20px;height:20px;border-radius:50%;background:var(--y);vertical-align:middle;margin-right:12px}
+h1{font-family:'Playfair Display',Georgia,serif;text-align:center;font-size:30px;margin:30px 0 6px}
+h1 i{background:linear-gradient(transparent 60%,var(--y) 60%)}
+.sub{text-align:center;color:var(--mut);font-size:14px;margin:0 0 26px}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin:0 0 8px;display:block}
+input[type=text],textarea{width:100%;font:16px 'DM Sans',sans-serif;color:#141414;background:#fff;border:2px solid #141414;border-radius:0;padding:12px;margin-bottom:26px}
+textarea{min-height:110px;resize:vertical}
+.bar{background:var(--y);color:#141414;font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:12px 16px;margin-top:8px}
+.hint{font-style:italic;color:var(--mut);font-size:13px;margin:10px 0 0 16px}
+label.row{display:flex;align-items:center;gap:16px;min-height:56px;padding:8px 6px 8px 16px;cursor:pointer;border-bottom:1px solid var(--line);font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:20px}
+label.pk{align-items:flex-start;padding-top:14px;padding-bottom:14px}
+label.pk b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:21px}
+label.pk span{display:block;font:13px/1.4 'DM Sans',sans-serif;color:var(--mut)}
+input[type=checkbox],input[type=radio]{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;margin:0;border:2px solid var(--ink);background:var(--card);display:grid;place-items:center}
+input[type=radio]{border-radius:50%;margin-top:3px}
+input[type=checkbox]:checked{background:var(--y);border-color:#141414}
+input[type=checkbox]:checked:after{content:"";width:6px;height:13px;border:solid #141414;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+input[type=radio]:checked{background:var(--y);border-color:#141414;box-shadow:inset 0 0 0 5px var(--y),inset 0 0 0 20px #141414}
+input:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.sec{margin-bottom:22px}
+.send{margin-top:34px}
+button{display:block;width:100%;font:700 17px 'DM Sans',sans-serif;border:2px solid #141414;padding:16px;cursor:pointer;border-radius:0}
+.go{background:#141414;color:#fff}
+.cp{background:transparent;color:var(--ink);border-color:var(--ink);margin-top:12px;font-weight:500}
+#msg{text-align:center;font-size:14px;color:var(--mut);min-height:20px;margin:14px 0 0}
+#msg.err{color:#c0392b;font-weight:700}
+footer{background:#141414;color:#f5f2ec;text-align:center;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer small{display:block;color:#a39e92;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Bruna <i>Lanna</i><small>DESIGN</small></div>
+  <h1>Escolha seus <i>serviços</i></h1>
+  <p class="sub">Toque nas caixinhas para marcar o que você quer</p>
+
+  <label class="lbl" for="nome">Nome da doceria / seu nome</label>
+  <input type="text" id="nome" autocomplete="name">
+
+  <div class="sec">
+    <div class="bar">Pacotes de Instagram · mensal</div>
+    <p class="hint">Escolha só um pacote</p>
+    <div id="pacotes"></div>
+  </div>
+  <div id="grupos"></div>
+
+  <label class="lbl" for="obs">Observações (opcional)</label>
+  <textarea id="obs"></textarea>
+
+  <div class="send">
+    <button class="go" id="enviar">Enviar pelo WhatsApp</button>
+    <button class="cp" id="copiar">Copiar resumo</button>
+    <p id="msg"></p>
+  </div>
+</div>
+<footer>Obrigada pela confiança!<small>Bruna Lanna Design</small></footer>
+
+<script>
+var WA = ""; // número da Bruna com DDI e DDD, só dígitos (ex.: 5531999999999)
+var PK = [
+  ["Essencial","8 artes de feed por mês","Para manter o perfil sempre ativo"],
+  ["Crescimento","12 artes de feed + 8 stories por mês","Para quem quer vender mais pelo Instagram"],
+  ["Completo","16 artes de feed + 12 stories + 2 carrosséis por mês","Inclui calendário de conteúdo mensal"]
+];
+var GR = [
+  ["Identidade visual",["Logotipo","Paleta de cores e tipografia","Manual de marca","Padrões e ilustrações"]],
+  ["Redes sociais · avulso",["Posts para feed","Stories","Capas de destaques","Carrosséis","Modelos editáveis","Foto de perfil e banner"]],
+  ["Material impresso",["Cardápio / tabela de preços","Cartão de visita","Etiquetas e rótulos","Adesivos e tags","Caixas e embalagens","Cartão de agradecimento","Flyer / panfleto","Banner / fachada"]],
+  ["Digital",["Cardápio digital","Catálogo de produtos","Site ou página de links","Assinatura de e-mail"]]
+];
+document.getElementById("pacotes").innerHTML = PK.map(function(p){
+  return '<label class="row pk"><input type="radio" name="pacote" value="'+p[0]+'"><div><b>'+p[0]+'</b><span>'+p[1]+'</span><span>'+p[2]+'</span></div></label>';
+}).join("");
+document.getElementById("grupos").innerHTML = GR.map(function(g){
+  return '<div class="sec" data-g="'+g[0]+'"><div class="bar">'+g[0]+'</div>'+g[1].map(function(s){
+    return '<label class="row"><input type="checkbox" value="'+s+'"><span>'+s+'</span></label>';
+  }).join("")+'</div>';
+}).join("");
+
+var msg = document.getElementById("msg");
+function resumo(){
+  var nome = document.getElementById("nome").value.trim();
+  var pk = document.querySelector('input[name=pacote]:checked');
+  var L = ["Olá, Bruna! Escolhi meus serviços:","","Nome: "+nome];
+  var n = 0;
+  if(pk){ L.push("","Pacote de Instagram: "+pk.value); n++; }
+  document.querySelectorAll("#grupos .sec").forEach(function(sec){
+    var v = [].map.call(sec.querySelectorAll("input:checked"),function(i){return i.value});
+    if(v.length){ L.push("",sec.dataset.g+":"); v.forEach(function(x){L.push("- "+x)}); n+=v.length; }
+  });
+  var o = document.getElementById("obs").value.trim();
+  if(o) L.push("","Observações: "+o);
+  return {nome:nome,n:n,texto:L.join("\n")};
+}
+function falha(t){ msg.className="err"; msg.textContent=t; }
+function valida(r){
+  if(!r.nome){ falha("Escreva o nome da doceria ou o seu nome."); document.getElementById("nome").focus(); return false; }
+  if(!r.n){ falha("Marque pelo menos um serviço."); return false; }
+  return true;
+}
+document.getElementById("enviar").onclick = function(){
+  var r = resumo(); if(!valida(r)) return;
+  msg.className=""; msg.textContent="Abrindo o WhatsApp…";
+  var a = document.createElement("a");
+  a.href = "https://wa.me/"+WA+"?text="+encodeURIComponent(r.texto);
+  a.target = "_blank"; a.rel = "noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+};
+document.getElementById("copiar").onclick = function(){
+  var r = resumo(); if(!valida(r)) return;
+  function ok(){ msg.className=""; msg.textContent="Resumo copiado! Cole na conversa do WhatsApp."; }
+  function alt(){
+    var t = document.createElement("textarea"); t.value = r.texto; document.body.appendChild(t); t.select();
+    try{ document.execCommand("copy"); ok(); }catch(e){ falha("Não consegui copiar. Use o botão do WhatsApp."); }
+    t.remove();
+  }
+  try{ navigator.clipboard.writeText(r.texto).then(ok,alt); }catch(e){ alt(); }
+};
+</script>
+</body>
+</html>
